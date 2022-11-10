@@ -4,7 +4,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@ResponseBody
 @RequestMapping("hello")
 public class HelloController {
 
@@ -21,7 +20,9 @@ public class HelloController {
 
     //Handles request of the form /hello?name=LaunchCode
 
+
     @RequestMapping(method = {RequestMethod.GET, RequestMethod.POST}, value = "hello")
+    @ResponseBody
     public String helloWithQueryParam(@RequestParam String name) {
 
         return "Hello, " + name + "!";
@@ -37,14 +38,7 @@ public class HelloController {
 
     @GetMapping("form")
     public String helloForm() {
-        return "<html>" +
-                "<body>" +
-                "<form action='hello' method='post'>" +  //submit a request to /hello
-                "<input type='text' name='name'>" +
-                "<input type='submit' value='Greet me!'>" +
-                "</form>" +
-                "</body>" +
-                "</html>";
+        return "form";
     }
 
 }
